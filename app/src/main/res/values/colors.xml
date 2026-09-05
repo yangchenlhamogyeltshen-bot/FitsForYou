@@ -41,6 +41,7 @@
 
     <color name="primary_light">#E8F1F1</color>
     <color name="primary_xlight">#F4F9F9</color>
+    <color name="primary_scrim">#901B5E5E</color>
     <color name="accent_light">#FFF0EB</color>
 
     <color name="error">#B00020</color>

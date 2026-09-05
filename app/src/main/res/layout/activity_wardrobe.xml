@@ -7,35 +7,43 @@
     android:layout_height="match_parent"
     android:background="@color/background">
 
-    <TextView
-        android:id="@+id/wardrobeTitle"
-        style="@style/TextTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_large"
-        android:layout_marginTop="24dp"
-        android:text="My Wardrobe"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_height"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/addClothingButton"
-        style="@style/Widget.Material3.Button.IconButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="16dp"
-        app:icon="@android:drawable/ic_input_add"
-        app:iconTint="@color/primary"
-        app:layout_constraintBottom_toBottomOf="@id/wardrobeTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/wardrobeTitle" />
+        <TextView
+            android:id="@+id/wardrobeTitle"
+            style="@style/TextHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_large"
+            android:text="My Wardrobe"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/addClothingButton"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:contentDescription="@string/cd_add_clothing"
+            app:icon="@android:drawable/ic_input_add"
+            app:iconTint="@color/primary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
         android:id="@+id/searchEditText"
         android:layout_width="match_parent"
         android:layout_height="@dimen/input_height"
         android:layout_marginStart="@dimen/spacing_large"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/spacing_small"
         android:layout_marginEnd="@dimen/spacing_large"
         android:background="@drawable/search_bg"
         android:drawableStart="@android:drawable/ic_menu_search"
@@ -44,7 +52,7 @@
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:textSize="@dimen/text_size_body"
-        app:layout_constraintTop_toBottomOf="@id/wardrobeTitle" />
+        app:layout_constraintTop_toBottomOf="@id/header" />
 
     <HorizontalScrollView
         android:id="@+id/filterScroll"

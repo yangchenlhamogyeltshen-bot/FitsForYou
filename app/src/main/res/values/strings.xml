@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">FitsForYou</string>
+    <string name="join_app">Join FitsForYou</string>
+    <string name="cd_back">Back</string>
+    <string name="cd_edit_outfit">Edit outfit</string>
+    <string name="cd_delete_outfit">Delete outfit</string>
+    <string name="cd_change_suggestion">Change suggestion</string>
+    <string name="cd_add_clothing">Add clothing</string>
 </resources>

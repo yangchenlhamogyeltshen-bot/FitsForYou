@@ -31,7 +31,6 @@ class StatsActivity : AppCompatActivity() {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.statsRoot)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.updatePadding(top = systemBars.top)
-            findViewById<View>(R.id.bottomNavigation).updatePadding(bottom = systemBars.bottom)
             insets
         }
 

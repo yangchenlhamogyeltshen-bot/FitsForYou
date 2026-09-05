@@ -11,63 +11,68 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/header_height"
         android:background="@color/white"
-        android:paddingBottom="16dp"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/backBtn"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="@dimen/spacing_small"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_menu_revert"
+            android:contentDescription="@string/cd_back"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/text_primary" />
 
-        <TextView
-            android:id="@+id/capsuleTitle"
-            style="@style/TextTitle"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/titleGroup"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:text="Capsule Collection"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/backBtn" />
+            android:layout_marginStart="8dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/capsuleCountText"
+            app:layout_constraintStart_toEndOf="@id/backBtn"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/capsuleSubtitle"
-            style="@style/TextSecondary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="4dp"
-            android:text="Your most versatile styling pieces"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/capsuleTitle" />
+            <TextView
+                android:id="@+id/capsuleTitle"
+                style="@style/TextHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Capsule Collection" />
+
+            <TextView
+                android:id="@+id/capsuleSubtitle"
+                style="@style/TextSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your most versatile styling pieces"
+                android:textSize="@dimen/text_size_tiny" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/capsuleCountText"
             style="@style/TextBody"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="@dimen/spacing_large"
             android:text="0 Items"
-            android:textStyle="bold"
             android:textColor="@color/primary"
-            app:layout_constraintBottom_toBottomOf="@id/capsuleSubtitle"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="16dp"
             android:background="@color/border"
-            app:layout_constraintTop_toBottomOf="@id/capsuleSubtitle" />
+            app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -88,7 +93,7 @@
         style="@style/PrimaryButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="@dimen/spacing_large"
         android:text="+ Add More Capsule Essentials"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -111,7 +116,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@color/primary_light"
-            android:padding="24dp"
+            android:padding="@dimen/spacing_large"
             android:src="@android:drawable/ic_menu_compass"
             app:shapeAppearanceOverlay="@style/CircleImage"
             app:tint="@color/primary" />
@@ -120,14 +125,14 @@
             style="@style/TextHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="@dimen/spacing_large"
             android:text="Empty Collection" />
 
         <TextView
             style="@style/TextSecondary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/spacing_small"
             android:gravity="center"
             android:text="Start adding essentials from your wardrobe to build your capsule." />
 
@@ -136,7 +141,7 @@
             style="@style/PrimaryButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="@dimen/spacing_xlarge"
             android:paddingHorizontal="40dp"
             android:text="Explore Wardrobe" />
     </LinearLayout>

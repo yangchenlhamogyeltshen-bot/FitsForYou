@@ -1,72 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="24dp">
+    android:background="@color/white">
 
-    <!-- App name -->
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fits4You"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp" />
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <!-- Subtitle -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Your wardrobe, your style"
-        android:textSize="16sp"
-        android:layout_marginBottom="32dp" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@color/primary_light"
+            android:padding="20dp"
+            android:src="@android:drawable/ic_menu_gallery"
+            app:shapeAppearanceOverlay="@style/CircleImage"
+            app:tint="@color/primary" />
 
-    <!-- Email -->
-    <EditText
-        android:id="@+id/emailEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Email"
-        android:inputType="textEmailAddress" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="FitsForYou"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_size_hero"
+            android:textStyle="bold"
+            android:letterSpacing="-0.02" />
 
-    <!-- Password -->
-    <EditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:layout_marginTop="12dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Curating your digital closet"
+            android:textColor="@color/text_secondary"
+            android:alpha="0.8"
+            android:textSize="@dimen/text_size_small"
+            android:letterSpacing="0.02" />
 
-    <!-- Login button -->
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:layout_marginTop="24dp" />
+    </LinearLayout>
 
-    <!-- Error message -->
-    <TextView
-        android:id="@+id/errorTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="14sp"
-        android:layout_marginTop="12dp" />
-
-    <!-- Signup link -->
-    <TextView
-        android:id="@+id/signupTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Don't have an account? Sign Up"
-        android:textSize="16sp"
-        android:layout_marginTop="24dp"
-        android:clickable="true"
-        android:focusable="true" />
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

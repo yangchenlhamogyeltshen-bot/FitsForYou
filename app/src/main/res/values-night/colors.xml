@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#121212</color>
+    <color name="surface">#1E1E1E</color>
+    <color name="on_surface">#FFFFFF</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B3B3B3</color>
+    <color name="border">#333333</color>
+    <color name="circle_icon_bg">#2C2C2C</color>
+    <color name="card_bg">#1E1E1E</color>
+    <color name="peach_bg">#3E2723</color>
+    <color name="peach_text">#FFAB91</color>
+</resources>

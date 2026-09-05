@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/emptyStateLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_xlarge"
+    android:background="@color/background"
+    android:visibility="gone">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:background="@color/primary_light"
+        android:padding="32dp"
+        android:src="@android:drawable/ic_menu_gallery"
+        app:shapeAppearanceOverlay="@style/CircleImage"
+        app:tint="@color/primary" />
+
+    <TextView
+        style="@style/TextHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Your Closet is Waiting"
+        android:textSize="@dimen/text_size_header"
+        android:letterSpacing="-0.01" />
+
+    <TextView
+        style="@style/TextSecondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Add your first piece to start building your digital wardrobe collection."
+        android:lineSpacingExtra="4dp" />
+
+    <Button
+        android:id="@+id/emptyAddButton"
+        style="@style/PrimaryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:paddingHorizontal="40dp"
+        android:text="Add a Piece" />
+
+</LinearLayout>

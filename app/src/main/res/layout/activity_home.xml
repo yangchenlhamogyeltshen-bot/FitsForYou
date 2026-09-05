@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="80dp">
+
+            <!-- 1. Editorial Header -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="24dp"
+                android:paddingTop="32dp"
+                android:paddingBottom="16dp">
+
+                <TextView
+                    android:id="@+id/greetingTextView"
+                    style="@style/TextTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hello, User"
+                    android:textSize="@dimen/text_size_large"
+                    android:letterSpacing="-0.01"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/dateTextView"
+                    style="@style/TextSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Organize. Style. Wear."
+                    android:textSize="@dimen/text_size_body"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/greetingTextView" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- 2. Today's Outfit & Weather Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/todayOutfitCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="@dimen/card_corner_radius_large"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Weather Info -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:background="@color/primary_xlight">
+                        <ImageView
+                            android:id="@+id/weatherIcon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@android:drawable/ic_menu_day"
+                            app:tint="@color/primary" />
+                        <TextView
+                            android:id="@+id/weatherInfoText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="Thimphu · 18°C · Partly Cloudy"
+                            android:textSize="@dimen/text_size_small"
+                            android:textStyle="bold"
+                            android:textColor="@color/primary" />
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/suggestionImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="280dp"
+                            android:scaleType="centerCrop"
+                            android:src="@android:drawable/ic_menu_gallery"
+                            android:alpha="0.8"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <LinearLayout
+                            android:id="@+id/noOutfitState"
+                            android:layout_width="match_parent"
+                            android:layout_height="280dp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:background="@color/primary_xlight"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toTopOf="parent">
+                            <TextView style="@style/TextHeader" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Your closet is empty" android:textSize="@dimen/text_size_body" />
+                            <TextView style="@style/TextSecondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Add clothes to get suggestions" />
+                            <Button
+                                android:id="@+id/emptyAddClothesBtn"
+                                style="@style/PrimaryButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:text="Add Clothes"
+                                android:textSize="@dimen/text_size_tiny" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:background="@drawable/gradient_bottom_scrim"
+                            app:layout_constraintBottom_toBottomOf="@id/suggestionImage" />
+
+                        <LinearLayout
+                            android:id="@+id/suggestionDetails"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="20dp"
+                            app:layout_constraintBottom_toBottomOf="@id/suggestionImage">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="SUGGESTED FOR TODAY"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_size_caption"
+                                android:textStyle="bold"
+                                android:letterSpacing="0.1" />
+
+                            <TextView
+                            android:id="@+id/suggestedPieceName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text=""
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_subheader"
+                            android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/changeSuggestionBtn"
+                            style="@style/Widget.Material3.Button.IconButton"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_margin="12dp"
+                            app:icon="@android:drawable/ic_menu_rotate"
+                            app:iconTint="@color/white"
+                            android:background="@drawable/ring_outline"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <Button
+                        android:id="@+id/markWornQuickBtn"
+                        style="@style/PrimaryButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_margin="16dp"
+                        android:text="Wear This Piece"
+                        android:textAllCaps="false"
+                        app:cornerRadius="16dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 3. Wardrobe Summary -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="24dp"
+                android:layout_marginTop="24dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/closetCountText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 Clothes"
+                    style="@style/TextSecondary"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary" />
+
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="4dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:background="@color/border"
+                    android:alpha="0.5" />
+
+                <TextView
+                    android:id="@+id/looksCountText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 Outfits"
+                    style="@style/TextSecondary"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary" />
+
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="4dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:background="@color/border"
+                    android:alpha="0.5" />
+
+                <TextView
+                    android:id="@+id/notWornCountText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 Not Worn"
+                    style="@style/TextSecondary"
+                    android:textStyle="bold"
+                    android:textColor="@color/accent" />
+            </LinearLayout>
+
+            <!-- 4. Closet Preview -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:paddingHorizontal="24dp">
+
+                <TextView
+                    android:id="@+id/closetTitle"
+                    style="@style/TextHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Your Wardrobe"
+                    android:textSize="@dimen/text_size_header"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/viewAllCloset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View Closet →"
+                    style="@style/TextSecondary"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/closetTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/closetTitle" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/closetPreviewRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:clipToPadding="false"
+                android:paddingHorizontal="16dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_closet_preview" />
+
+            <!-- 5. Quick Actions Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:paddingHorizontal="24dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/homeAddPieceBtn"
+                    style="@style/SecondaryButton"
+                    android:layout_width="0dp"
+                    android:layout_height="54dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    android:text="Add Clothes"
+                    android:textSize="@dimen/text_size_tiny"
+                    app:icon="@android:drawable/ic_input_add" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/homeCreateLookBtn"
+                    style="@style/SecondaryButton"
+                    android:layout_width="0dp"
+                    android:layout_height="54dp"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="6dp"
+                    android:text="Create Outfit"
+                    android:textSize="@dimen/text_size_tiny"
+                    app:icon="@android:drawable/ic_menu_edit" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/homeMarkWornBtn"
+                    style="@style/SecondaryButton"
+                    android:layout_width="0dp"
+                    android:layout_height="54dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    android:text="Mark Worn"
+                    android:textSize="@dimen/text_size_tiny"
+                    app:icon="@android:drawable/ic_menu_today" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/logoutButton"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="48dp"
+                android:text="Sign Out"
+                android:textColor="@color/error"
+                android:alpha="0.4" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:itemIconTint="@color/bottom_nav_selector"
+        app:itemTextColor="@color/bottom_nav_selector"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_nav_menu"
+        app:elevation="8dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/wardrobeRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <TextView
+        android:id="@+id/wardrobeTitle"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_large"
+        android:layout_marginTop="24dp"
+        android:text="My Wardrobe"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addClothingButton"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        app:icon="@android:drawable/ic_input_add"
+        app:iconTint="@color/primary"
+        app:layout_constraintBottom_toBottomOf="@id/wardrobeTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/wardrobeTitle" />
+
+    <EditText
+        android:id="@+id/searchEditText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/input_height"
+        android:layout_marginStart="@dimen/spacing_large"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="@dimen/spacing_large"
+        android:background="@drawable/search_bg"
+        android:drawableStart="@android:drawable/ic_menu_search"
+        android:drawablePadding="12dp"
+        android:hint="Search your wardrobe"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:textSize="@dimen/text_size_body"
+        app:layout_constraintTop_toBottomOf="@id/wardrobeTitle" />
+
+    <HorizontalScrollView
+        android:id="@+id/filterScroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/spacing_large"
+        android:paddingEnd="@dimen/spacing_large"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/searchEditText">
+
+        <LinearLayout
+            android:id="@+id/filterContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="12dp">
+
+            <Button
+                android:id="@+id/filterAll"
+                style="@style/FilterButtonStyle"
+                android:text="All"
+                android:state_selected="true" />
+
+            <Button
+                android:id="@+id/filterTops"
+                style="@style/FilterButtonStyle"
+                android:text="Tops" />
+
+            <Button
+                android:id="@+id/filterBottoms"
+                style="@style/FilterButtonStyle"
+                android:text="Bottoms" />
+
+            <Button
+                android:id="@+id/filterDresses"
+                style="@style/FilterButtonStyle"
+                android:text="Dresses" />
+
+            <Button
+                android:id="@+id/filterTraditional"
+                style="@style/FilterButtonStyle"
+                android:text="Traditional" />
+
+            <Button
+                android:id="@+id/filterOuterwear"
+                style="@style/FilterButtonStyle"
+                android:text="Outerwear" />
+
+            <Button
+                android:id="@+id/filterShoes"
+                style="@style/FilterButtonStyle"
+                android:text="Shoes" />
+
+            <Button
+                android:id="@+id/filterAccessories"
+                style="@style/FilterButtonStyle"
+                android:text="Accessories" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/wardrobeRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:clipToPadding="false"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filterScroll"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2" />
+
+    <include
+        layout="@layout/layout_wardrobe_empty"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintTop_toBottomOf="@id/filterScroll" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:itemIconTint="@color/bottom_nav_selector"
+        app:itemTextColor="@color/bottom_nav_selector"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_nav_menu"
+        app:elevation="8dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

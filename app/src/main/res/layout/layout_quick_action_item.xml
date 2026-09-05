@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="@dimen/card_corner_radius"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/border"
+    app:strokeWidth="1dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/actionIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@color/primary_xlight"
+            android:padding="10dp"
+            android:src="@android:drawable/ic_input_add"
+            app:shapeAppearanceOverlay="@style/CircleImage"
+            app:tint="@color/primary" />
+
+        <TextView
+            android:id="@+id/actionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="Add Item"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_small" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

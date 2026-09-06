@@ -108,7 +108,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="MOST WORN"
-                            android:textColor="@color/primary"
+                            android:textColor="@color/secondary"
                             android:textSize="@dimen/text_size_caption"
                             android:textStyle="bold"
                             android:letterSpacing="0.1" />
@@ -155,7 +155,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="LEAST USED"
-                            android:textColor="@color/outfit_orange"
+                            android:textColor="@color/secondary"
                             android:textSize="@dimen/text_size_caption"
                             android:textStyle="bold"
                             android:letterSpacing="0.1" />
@@ -278,11 +278,11 @@
                             android:id="@+id/wearCountBadge"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@color/trend_bg"
+                            android:background="@color/accent_container"
                             android:paddingHorizontal="14dp"
                             android:paddingVertical="10dp"
                             android:text="Wears: 0"
-                            android:textColor="@color/trend_text"
+                            android:textColor="@color/accent"
                             android:textStyle="bold"
                             android:textSize="@dimen/text_size_small" />
 
@@ -305,7 +305,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/bottom_nav_height"
         android:background="@color/white"
         app:itemIconTint="@color/bottom_nav_selector"
         app:itemTextColor="@color/bottom_nav_selector"

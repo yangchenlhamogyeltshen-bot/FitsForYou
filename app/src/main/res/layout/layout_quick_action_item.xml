@@ -23,7 +23,7 @@
             android:id="@+id/actionIcon"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@color/primary_xlight"
+            android:background="@color/primary_container"
             android:padding="10dp"
             android:src="@android:drawable/ic_input_add"
             app:shapeAppearanceOverlay="@style/CircleImage"

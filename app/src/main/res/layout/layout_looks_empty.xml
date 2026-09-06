@@ -13,7 +13,7 @@
     <com.google.android.material.imageview.ShapeableImageView
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:background="@color/primary_light"
+        android:background="@color/primary_container"
         android:padding="@dimen/spacing_xlarge"
         android:src="@android:drawable/ic_menu_myplaces"
         app:shapeAppearanceOverlay="@style/CircleImage"

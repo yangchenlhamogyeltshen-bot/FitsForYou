@@ -23,7 +23,7 @@
         android:layout_weight="1"
         android:progress="80"
         app:indicatorColor="@color/primary"
-        app:trackColor="@color/primary_xlight"
+        app:trackColor="@color/primary_container"
         app:trackCornerRadius="6dp"
         app:trackThickness="14dp" />
 

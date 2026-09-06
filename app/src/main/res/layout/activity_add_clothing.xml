@@ -101,7 +101,7 @@
                         <com.google.android.material.imageview.ShapeableImageView
                             android:layout_width="72dp"
                             android:layout_height="72dp"
-                            android:background="@color/primary_light"
+                            android:background="@color/primary_container"
                             android:padding="20dp"
                             android:src="@android:drawable/ic_menu_camera"
                             app:shapeAppearanceOverlay="@style/CircleImage"

@@ -32,7 +32,7 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="4dp"
             android:text="ESSENTIAL"
-            android:textColor="@color/white"
+            android:textColor="@color/on_secondary"
             android:textSize="@dimen/text_size_micro"
             android:textStyle="bold"
             android:letterSpacing="0.08"

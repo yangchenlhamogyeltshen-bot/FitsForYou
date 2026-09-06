@@ -3,46 +3,41 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="primary">#1B5E5E</color>
-    <color name="primary_variant">#134545</color>
+    <color name="primary">#4A2545</color>
+    <color name="primary_dark">#331A2F</color>
+    <color name="primary_container">#EFE0EC</color>
     <color name="on_primary">#FFFFFF</color>
 
-    <color name="secondary">#1B5E5E</color>
-    <color name="on_secondary">#FFFFFF</color>
+    <color name="secondary">#FF6F61</color>
+    <color name="secondary_dark">#E14F41</color>
+    <color name="secondary_container">#FFE1DC</color>
+    <color name="on_secondary">#4A2545</color>
 
-    <color name="background">#F9FAFA</color>
-    <color name="on_background">#1B5E5E</color>
+    <color name="accent">#F4B942</color>
+    <color name="accent_container">#FDF0D5</color>
+    <color name="on_accent">#4A2545</color>
 
+    <color name="background">#FBF7F2</color>
     <color name="surface">#FFFFFF</color>
-    <color name="on_surface">#1B5E5E</color>
-
-    <color name="text_primary">#1D1E2C</color>
-    <color name="text_secondary">#7A7A7A</color>
-    <color name="border">#EAEAEA</color>
-    <color name="accent">#D35D47</color>
-
-    <color name="teal_active">#1B5E5E</color>
-    <color name="peach_bg">#FFF0EB</color>
-    <color name="peach_text">#D35D47</color>
-    <color name="circle_icon_bg">#E8F1F1</color>
-    <color name="outfit_orange">#E67E22</color>
-    <color name="outfit_pink">#E74C3C</color>
-    <color name="nav_inactive">#95A5A6</color>
     <color name="card_bg">#FFFFFF</color>
-    <color name="outfit_grey">#707584</color>
-    <color name="outfit_navy">#2E3A4E</color>
-    <color name="outfit_blue">#1B3D8A</color>
-    <color name="outfit_green">#06643C</color>
-    <color name="outfit_dark">#0F161E</color>
-    <color name="stats_teal">#1B5E5E</color>
-    <color name="stats_orange">#D35D47</color>
-    <color name="trend_bg">#E6F4F1</color>
-    <color name="trend_text">#1B5E5E</color>
 
-    <color name="primary_light">#E8F1F1</color>
-    <color name="primary_xlight">#F4F9F9</color>
-    <color name="primary_scrim">#901B5E5E</color>
-    <color name="accent_light">#FFF0EB</color>
+    <color name="text_primary">#2A1F28</color>
+    <color name="text_secondary">#8C7E88</color>
+    <color name="border">#E8DFE5</color>
 
-    <color name="error">#B00020</color>
+    <color name="error">#C0392B</color>
+
+    <color name="primary_scrim">#904A2545</color>
+
+    <!-- Clothing-swatch colors only — never use these for UI chrome -->
+    <color name="swatch_navy">#3E4A61</color>
+    <color name="swatch_blue">#5B7FA6</color>
+    <color name="swatch_green">#4E8C6C</color>
+    <color name="swatch_grey">#8B8F99</color>
+    <color name="swatch_charcoal">#2E2E2E</color>
+    <color name="swatch_black">#000000</color>
+    <color name="swatch_white">#FFFFFF</color>
+    <color name="swatch_tan">#D2B48C</color>
+    <color name="swatch_maroon">#800000</color>
+    <color name="swatch_mustard">#F4B942</color>
 </resources>

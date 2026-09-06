@@ -72,43 +72,43 @@
             android:orientation="horizontal"
             android:paddingBottom="12dp">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/filterAll"
                 style="@style/FilterButtonStyle"
                 android:text="All"
                 android:state_selected="true" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/filterTops"
                 style="@style/FilterButtonStyle"
                 android:text="Tops" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/filterBottoms"
                 style="@style/FilterButtonStyle"
                 android:text="Bottoms" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/filterDresses"
                 style="@style/FilterButtonStyle"
                 android:text="Dresses" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/filterTraditional"
                 style="@style/FilterButtonStyle"
                 android:text="Traditional" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/filterOuterwear"
                 style="@style/FilterButtonStyle"
                 android:text="Outerwear" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/filterShoes"
                 style="@style/FilterButtonStyle"
                 android:text="Shoes" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/filterAccessories"
                 style="@style/FilterButtonStyle"
                 android:text="Accessories" />
@@ -140,7 +140,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/bottom_nav_height"
         android:background="@color/white"
         app:itemIconTint="@color/bottom_nav_selector"
         app:itemTextColor="@color/bottom_nav_selector"

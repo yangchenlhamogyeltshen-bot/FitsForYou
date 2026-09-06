@@ -1,14 +1,22 @@
 package com.example.fitsforyou
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.provider.OpenableColumns
+import android.provider.Settings
 import android.view.View
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
@@ -25,12 +33,16 @@ import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
+import java.io.File
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AddClothingActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var database: AppDatabase
     private var selectedImageUri: Uri? = null
+    private var tempCameraUri: Uri? = null
     private var selectedColor: String? = null
     private var isEditMode = false
     private var clothingIdToEdit: Int = -1
@@ -45,16 +57,108 @@ class AddClothingActivity : AppCompatActivity() {
     private lateinit var colorRecyclerView: RecyclerView
     private lateinit var colorAdapter: ColorAdapter
 
-    private val getImage = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri: Uri? ->
+    private val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
         if (uri != null) {
-            if (validateImage(uri)) {
+            handleImageResult(uri, isPersistable = true)
+        }
+    }
+
+    private val takePicture = registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
+        if (success) {
+            tempCameraUri?.let { handleImageResult(it, isPersistable = false) }
+        }
+    }
+
+    private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+        if (isGranted) {
+            launchCamera()
+        } else {
+            handlePermissionDenial()
+        }
+    }
+
+    private fun handleImageResult(uri: Uri, isPersistable: Boolean) {
+        if (validateImage(uri)) {
+            if (isPersistable) {
                 persistUriPermission(uri)
-                selectedImageUri = uri
-                clothingImageView.load(uri) { crossfade(true) }
-                clothingImageView.alpha = 1.0f
-                addPhotoPlaceholder.visibility = View.GONE
+            }
+            selectedImageUri = uri
+            clothingImageView.load(uri) { crossfade(true) }
+            clothingImageView.alpha = 1.0f
+            addPhotoPlaceholder.visibility = View.GONE
+        }
+    }
+
+    private fun showPhotoOptions() {
+        val options = arrayOf("Take Photo", "Choose from Gallery")
+        AlertDialog.Builder(this)
+            .setTitle("Add Clothing Photo")
+            .setItems(options) { _, which ->
+                when (which) {
+                    0 -> checkCameraPermission()
+                    1 -> pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+                }
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    private fun checkCameraPermission() {
+        when {
+            ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED -> {
+                launchCamera()
+            }
+            shouldShowRequestPermissionRationale(Manifest.permission.CAMERA) -> {
+                showPermissionRationale()
+            }
+            else -> {
+                requestPermissionLauncher.launch(Manifest.permission.CAMERA)
             }
         }
+    }
+
+    private fun showPermissionRationale() {
+        AlertDialog.Builder(this)
+            .setTitle("Camera Permission Needed")
+            .setMessage("The camera is used to take photos of your clothing items.")
+            .setPositiveButton("OK") { _, _ ->
+                requestPermissionLauncher.launch(Manifest.permission.CAMERA)
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    private fun handlePermissionDenial() {
+        if (!shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
+            // Permission permanently denied
+            AlertDialog.Builder(this)
+                .setTitle("Camera Permission Required")
+                .setMessage("You have permanently denied camera access. Please enable it in the app settings to take photos.")
+                .setPositiveButton("Settings") { _, _ ->
+                    val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                        data = Uri.fromParts("package", packageName, null)
+                    }
+                    startActivity(intent)
+                }
+                .setNegativeButton("Cancel", null)
+                .show()
+        } else {
+            Toast.makeText(this, "Camera permission denied", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun launchCamera() {
+        val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+        val storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        val photoFile = File.createTempFile("JPEG_${timeStamp}_", ".jpg", storageDir)
+        
+        val uri = FileProvider.getUriForFile(
+            this,
+            "${packageName}.fileprovider",
+            photoFile
+        )
+        tempCameraUri = uri
+        takePicture.launch(uri)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,7 +188,7 @@ class AddClothingActivity : AppCompatActivity() {
         }
 
         findViewById<ImageButton>(R.id.backBtn).setOnClickListener { finish() }
-        findViewById<Button>(R.id.uploadPhotoButton).setOnClickListener { getImage.launch(arrayOf("image/*")) }
+        findViewById<Button>(R.id.uploadPhotoButton).setOnClickListener { showPhotoOptions() }
         findViewById<Button>(R.id.cancelButton).setOnClickListener { finish() }
         findViewById<Button>(R.id.saveButton).setOnClickListener { saveClothingItem() }
     }
@@ -106,7 +210,7 @@ class AddClothingActivity : AppCompatActivity() {
     }
 
     private fun setupColorPicker() {
-        val colors = listOf("#000000", "#FFFFFF", "#808080", "#000080", "#0000FF", "#FF0000", "#008000", "#FFFF00", "#F5F5DC", "#A52A2A")
+        val colors = listOf("#3E4A61", "#5B7FA6", "#4E8C6C", "#8B8F99", "#2E2E2E", "#000000", "#FFFFFF", "#D2B48C", "#800000", "#F4B942")
         colorAdapter = ColorAdapter(colors) { color -> selectedColor = color }
         colorRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         colorRecyclerView.adapter = colorAdapter

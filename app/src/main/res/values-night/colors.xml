@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="background">#121212</color>
-    <color name="surface">#1E1E1E</color>
-    <color name="on_surface">#FFFFFF</color>
-    <color name="text_primary">#FFFFFF</color>
-    <color name="text_secondary">#B3B3B3</color>
-    <color name="border">#333333</color>
-    <color name="circle_icon_bg">#2C2C2C</color>
-    <color name="card_bg">#1E1E1E</color>
-    <color name="peach_bg">#3E2723</color>
-    <color name="peach_text">#FFAB91</color>
+    <color name="primary">#EFE0EC</color>
+    <color name="primary_dark">#331A2F</color>
+    <color name="primary_container">#4A2545</color>
+    <color name="on_primary">#331A2F</color>
+
+    <color name="secondary">#FF8B7E</color>
+    <color name="secondary_dark">#FF6F61</color>
+    <color name="secondary_container">#4A2545</color>
+    <color name="on_secondary">#FFFFFF</color>
+
+    <color name="accent">#F4B942</color>
+    <color name="accent_container">#3D2E10</color>
+    <color name="on_accent">#FDF0D5</color>
+
+    <color name="background">#1A1714</color>
+    <color name="surface">#24211E</color>
+    <color name="card_bg">#2A2724</color>
+
+    <color name="text_primary">#E8E1E5</color>
+    <color name="text_secondary">#A89DA6</color>
+    <color name="border">#3D343A</color>
+
+    <color name="error">#E74C3C</color>
 </resources>

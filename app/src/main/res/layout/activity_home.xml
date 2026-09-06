@@ -76,7 +76,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:padding="@dimen/spacing_medium"
-                        android:background="@color/primary_xlight">
+                        android:background="@color/primary_container">
                         <ImageView
                             android:id="@+id/weatherIcon"
                             android:layout_width="24dp"
@@ -113,7 +113,7 @@
                             android:layout_height="280dp"
                             android:gravity="center"
                             android:orientation="vertical"
-                            android:background="@color/primary_xlight"
+                            android:background="@color/background"
                             android:visibility="gone"
                             app:layout_constraintTop_toTopOf="parent">
                             <TextView style="@style/TextHeader" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Your closet is empty" android:textSize="@dimen/text_size_body" />
@@ -145,8 +145,11 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:background="@color/accent_container"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
                                 android:text="SUGGESTED FOR TODAY"
-                                android:textColor="@color/white"
+                                android:textColor="@color/accent"
                                 android:textSize="@dimen/text_size_caption"
                                 android:textStyle="bold"
                                 android:letterSpacing="0.1" />
@@ -236,7 +239,7 @@
                     android:text="0 Not Worn"
                     style="@style/TextSecondary"
                     android:textStyle="bold"
-                    android:textColor="@color/accent" />
+                    android:textColor="@color/secondary" />
             </LinearLayout>
 
             <!-- 4. Closet Preview -->
@@ -339,7 +342,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/bottom_nav_height"
         android:background="@color/white"
         app:itemIconTint="@color/bottom_nav_selector"
         app:itemTextColor="@color/bottom_nav_selector"

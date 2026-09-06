@@ -13,7 +13,7 @@
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:layout_marginTop="100dp"
-        android:background="@color/circle_icon_bg"
+        android:background="@color/primary_container"
         android:padding="28dp"
         android:src="@android:drawable/ic_menu_gallery"
         app:layout_constraintEnd_toEndOf="parent"
